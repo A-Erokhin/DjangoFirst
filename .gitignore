@@ -1,1 +1,5 @@
 /django_venv
+.idea/
+.vscode/
+__pycache__/
+db.*
