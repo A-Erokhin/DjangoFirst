@@ -48,6 +48,6 @@ def items_list(reqest):
     <ol>
     """
     for item in items:
-        text += f"<li>{item['name']}</li>"
+        text += f"<a href='/item/{item['id']}'><li>{item['name']}</li></a>"
     text += "</ol>"
     return HttpResponse(text)
