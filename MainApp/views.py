@@ -18,11 +18,12 @@ items = [
 
 # Create your views here.
 def home(request):
-    text = f"""
-    <h1>"Изучаем django"</h1>
-    <b>Автор</b>: <i>Ерохин А.П.</i>
-    """
-    return HttpResponse(text)
+    # text = f"""
+    # <h1>"Изучаем django"</h1>
+    # <b>Автор</b>: <i>Ерохин А.П.</i>
+    # """
+    # return HttpResponse(text)
+    return render(request, 'index.html')
 
 def about(request):
     text = f"""
