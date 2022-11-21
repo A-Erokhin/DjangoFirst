@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from django.http import Http404
 
 author = {
     "name": "Александр",
@@ -32,14 +33,21 @@ def about(request):
     """
     return HttpResponse(text)
 
-def item(reqest, id):
-    pos = id - 1
-    if pos < 5:
-        text = f"""
-            Артикул: <b>{items[pos]['id']}</b><br>
-            Название: <b>{items[pos]['name']}</b><br>
-            Количество: <b>{items[pos]['quantity']}</b><br/> 
-            """
-    else:
-        text = f"Товар с id={id} не найден"
+def page_item(reqest, id):
+    for item in items:
+        if item['id'] == id:
+            text = f"""
+                Название: <b>{item['name']}</b><br>
+                Количество: <b>{item['quantity']}</b><br/> 
+                """
+            return HttpResponse(text)
+    raise Http404(f"Товар с id={id} не найден")
+
+def items_list(reqest):
+    text = """
+    <ol>
+    """
+    for item in items:
+        text += f"<li>{item['name']}</li>"
+    text += "</ol>"
     return HttpResponse(text)
