@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="">
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
     <style>
         li {
             display: inline-block;
@@ -11,21 +8,18 @@
             padding: 10px;
         }
     </style>
-</head>
-<body>
-<header>
-   <a href="/"> Домой </a>/<a href="/items"> Список товаров </a>
-</header>
-<h2>Список товаров</h2>
-<ol>
-    {% for item in items %}
-        <a href="/item/{{ item.id }}">
-            <li>
-                <div>{{ item.name }}</div>
-                <div>Описание товара</div>
-            </li>
-        </a>
-    {% endfor %}
-</ol>
-</body>
-</html>
+{% endblock %}
+
+{% block content %}
+    <h2>Список товаров</h2>
+    <ol>
+        {% for item in items %}
+            <a href="/item/{{ item.id }}">
+                <li>
+                    <div>{{ item.name }}</div>
+                    <div>Описание товара</div>
+                </li>
+            </a>
+        {% endfor %}
+    </ol>
+{% endblock %}
