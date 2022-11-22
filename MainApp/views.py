@@ -18,7 +18,7 @@ def home(request):
 
 def page_item(request, id):
     try:
-        item = Item.objects.get(id = id)
+        item = Item.objects.get(id=id)
     except ObjectDoesNotExist:
         raise Http404(f"Товар с id={id} не найден")
     context = {
